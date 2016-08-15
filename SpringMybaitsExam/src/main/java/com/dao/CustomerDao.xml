@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CustomerDao">
+	<insert id="insetCustomer" parameterType="Customer">
+		insert into customer(store_id, first_name, last_name, email, address_id, create_date) values (#{store_id},#{first_name},#{last_name},#{email},#{address_id},#{create_date});
+	</insert>
+</mapper>
