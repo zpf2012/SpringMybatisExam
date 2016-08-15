@@ -34,4 +34,19 @@ public class CustomerImpl implements CustomerDao{
 		
 	}
 
+	public void deleteCustomer(int customer_id) {
+		try {
+			reader = Resources.getResourceAsReader(resource);
+			session = mapper.openSession();
+			session.insert("deleteCustomer", customer_id);
+			session.commit();
+		} catch (IOException e) {
+			session.rollback();
+			e.printStackTrace();
+		}finally{
+			session.close();
+		}
+		
+	}
+
 }

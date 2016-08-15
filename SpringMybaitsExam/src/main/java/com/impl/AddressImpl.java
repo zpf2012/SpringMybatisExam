@@ -2,6 +2,7 @@ package com.impl;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -21,7 +22,7 @@ public class AddressImpl implements AddressDao{
 	SqlSessionFactory mapper = new SqlSessionFactoryBuilder().build(reader);
 	SqlSession session;
 	
-	public Address selectAddress(int address_id) {
+	public List<Address> selectAddress(int address_id) {
 		
 			try {
 				reader = Resources.getResourceAsReader(resource);
@@ -29,7 +30,7 @@ public class AddressImpl implements AddressDao{
 				e.printStackTrace();
 			}
 			session = mapper.openSession();
-			Address address = session.selectOne("selectAddress", address_id);
+			List<Address> address = session.selectOne("selectAddress", address_id);
 			
 			session.close();
 			

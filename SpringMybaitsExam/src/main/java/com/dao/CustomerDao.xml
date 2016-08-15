@@ -6,4 +6,8 @@
 	<insert id="insetCustomer" parameterType="Customer">
 		insert into customer(store_id, first_name, last_name, email, address_id, create_date) values (#{store_id},#{first_name},#{last_name},#{email},#{address_id},#{create_date});
 	</insert>
+	
+	<delete id="deleteCustomer" parameterType="int">
+		delete from customer where customer_id = #{customer_id}
+	</delete>
 </mapper>
