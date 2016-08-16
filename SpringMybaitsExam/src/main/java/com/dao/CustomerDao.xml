@@ -4,10 +4,33 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.CustomerDao">
 	<insert id="insetCustomer" parameterType="Customer">
-		insert into customer(store_id, first_name, last_name, email, address_id, create_date) values (#{store_id},#{first_name},#{last_name},#{email},#{address_id},#{create_date});
+		insert into
+		customer(store_id, first_name, last_name, email, address_id,
+		create_date) values
+		(#{store_id},#{first_name},#{last_name},#{email},#{address_id},#{create_date});
 	</insert>
-	
+
 	<delete id="deleteCustomer" parameterType="int">
-		delete from customer where customer_id = #{customer_id}
+		delete from customer
+		where customer_id = #{customer_id}
 	</delete>
+	
+ 	<select id="selectCustomer" resultMap="FindCustomer">
+		select
+		c.store_id,c.first_name,c.last_name,c.email,c.create_date,a.address
+		from customer
+		c, address a
+		where c.address_id =a.address_id
+	</select>
+
+	<resultMap type="Customer" id="FindCustomer">
+		<result property="store_id" column="store_id"/>
+		<result property="last_name" column="last_name"/>
+		<result property="email" column="email"/>
+		<result property="create_date" column="create_date"/>
+		<result property="first_name" column="first_name" />
+		<association property="address" javaType="Address">
+			<result property="address" column="address" />
+		</association>
+	</resultMap>
 </mapper>

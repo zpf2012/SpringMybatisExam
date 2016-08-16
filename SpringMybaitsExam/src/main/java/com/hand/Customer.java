@@ -9,6 +9,7 @@ public class Customer {
 	private String email;
 	private int address_id;
 	private Date create_date;
+	private Address address;
 
 	public int getStore_id() {
 		return store_id;
@@ -58,12 +59,19 @@ public class Customer {
 		this.create_date = create_date;
 	}
 
-	@Override
-	public String toString() {
-		return "Customer [store_id=" + store_id + ", first_name=" + first_name + ", last_name=" + last_name + ", email="
-				+ email + ", address_id=" + address_id + ", create_date=" + create_date + "]";
+	public Address getAddress() {
+		return address;
 	}
-	
-	
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+//
+//	@Override
+//	public String toString() {
+//		return "Customer [store_id=" + store_id + ", first_name=" + first_name
+//				+ ", last_name=" + last_name + ", email=" + email + ", address_id=" + address_id + ", create_date="
+//				+ create_date + ", address=" + address.getAddress() + "]";
+//	}
 
 }
